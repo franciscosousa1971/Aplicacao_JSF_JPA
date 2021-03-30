@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateContatosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateContatosLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{contatosController.selected.id}" title="#{bundle.CreateContatosTitle_id}" required="true" requiredMessage="#{bundle.CreateContatosRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateContatosLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{contatosController.selected.nome}" title="#{bundle.CreateContatosTitle_nome}" required="true" requiredMessage="#{bundle.CreateContatosRequiredMessage_nome}"/>
+                    <h:outputLabel value="#{bundle.CreateContatosLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{contatosController.selected.email}" title="#{bundle.CreateContatosTitle_email}" required="true" requiredMessage="#{bundle.CreateContatosRequiredMessage_email}"/>
+                    <h:outputLabel value="#{bundle.CreateContatosLabel_telefone}" for="telefone" />
+                    <h:inputText id="telefone" value="#{contatosController.selected.telefone}" title="#{bundle.CreateContatosTitle_telefone}" required="true" requiredMessage="#{bundle.CreateContatosRequiredMessage_telefone}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{contatosController.create}" value="#{bundle.CreateContatosSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{contatosController.prepareList}" value="#{bundle.CreateContatosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateContatosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
